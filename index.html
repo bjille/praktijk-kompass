@@ -1,0 +1,821 @@
+<!-- Praktijk Kompass — visietekst website -->
+<title>Praktijk Kompass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Mrs+Saint+Delafield&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:        #f8f1e2;
+    --cream-2:      #efe4c9;
+    --paper:        #fffaf0;
+    --ink:          #2c2417;
+    --ink-soft:     #55503f;
+    --moss:         #6f7a5c;
+    --forest:       #1f3a2c;
+    --forest-2:     #16281e;
+    --forest-3:     #0f1c15;
+    --gold:         #b1793a;
+    --gold-strong:  #925f28;
+    --gold-light:   #dcb877;
+    --line:         #d9c9a3;
+    --shadow:       rgba(31,58,44,0.14);
+
+    --sky-top:      #f8ecd4;
+    --sky-mid:      #eec98a;
+    --sky-low:      #d99a55;
+    --ridge-back:   #2c4635;
+    --ridge-mid:    #223a2c;
+    --ridge-front:  #16281e;
+    --sun:          #f3d9a0;
+    --trail:        #f8ecd4;
+
+    --focus:        #925f28;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:      #16281e;
+      --cream-2:    #1c3123;
+      --paper:      #19291f;
+      --ink:        #f2e9d4;
+      --ink-soft:   #cbbf9e;
+      --moss:       #9caa87;
+      --forest:     #0f1c15;
+      --forest-2:   #0c1610;
+      --forest-3:   #08100c;
+      --gold:       #d3a15c;
+      --gold-strong: #e6bd7e;
+      --gold-light: #e9cd98;
+      --line:       #3a4c3c;
+      --shadow:     rgba(0,0,0,0.35);
+
+      --sky-top:    #16281e;
+      --sky-mid:    #22331f;
+      --sky-low:    #3a3324;
+      --ridge-back: #0c1a12;
+      --ridge-mid:  #0a150f;
+      --ridge-front:#070f0a;
+      --sun:        #d3a15c;
+      --trail:      #e9cd98;
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:      #16281e;
+    --cream-2:    #1c3123;
+    --paper:      #19291f;
+    --ink:        #f2e9d4;
+    --ink-soft:   #cbbf9e;
+    --moss:       #9caa87;
+    --forest:     #0f1c15;
+    --forest-2:   #0c1610;
+    --forest-3:   #08100c;
+    --gold:       #d3a15c;
+    --gold-strong: #e6bd7e;
+    --gold-light: #e9cd98;
+    --line:       #3a4c3c;
+    --shadow:     rgba(0,0,0,0.35);
+
+    --sky-top:    #16281e;
+    --sky-mid:    #22331f;
+    --sky-low:    #3a3324;
+    --ridge-back: #0c1a12;
+    --ridge-mid:  #0a150f;
+    --ridge-front:#070f0a;
+    --sun:        #d3a15c;
+    --trail:      #e9cd98;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Jost", "Segoe UI", sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{ max-width:100%; display:block; }
+
+  a{ color:inherit; }
+
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,56px);
+  }
+
+  h1,h2,h3{
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-weight:600;
+    color:var(--ink);
+    text-wrap:balance;
+    margin:0;
+  }
+
+  .eyebrow{
+    font-family:"Jost", sans-serif;
+    font-size:0.72rem;
+    font-weight:500;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-strong);
+    margin:0 0 14px;
+  }
+
+  .script{
+    font-family:"Mrs Saint Delafield", cursive;
+    font-weight:400;
+    line-height:1.25;
+    color:var(--gold-strong);
+  }
+
+  p{ margin:0 0 1.1em; max-width:62ch; color:var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 30px;
+    border-radius:2px;
+    font-family:"Jost", sans-serif;
+    font-size:0.86rem;
+    font-weight:500;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+  .btn:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
+  .btn-solid{ background:var(--gold); color:var(--forest-3); }
+  .btn-solid:hover{ background:var(--gold-strong); transform:translateY(-1px); }
+  .btn-ghost{ border-color:var(--gold); color:var(--cream); }
+  :root[data-theme="light"] .btn-ghost, .btn-ghost{ color:inherit; }
+  .btn-ghost:hover{ background:var(--gold); color:var(--forest-3); }
+
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    position:fixed; inset:0 0 auto 0; z-index:50;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand svg{ width:26px; height:26px; color:var(--gold); flex:none; }
+  .brand-text{
+    font-family:"Cormorant Garamond", serif;
+    font-size:1.28rem; font-weight:600; letter-spacing:0.04em;
+    color:var(--ink);
+  }
+  .brand-text em{ font-style:normal; color:var(--gold-strong); }
+
+  nav.links{ display:flex; gap:clamp(14px,2vw,30px); }
+  nav.links a{
+    font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;
+    text-decoration:none; color:var(--ink-soft);
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{ color:var(--gold-strong); border-color:var(--gold); }
+  .nav-cta{ display:none; }
+  @media (min-width:760px){ .nav-cta{ display:inline-flex; padding:9px 20px; font-size:0.72rem; } }
+  @media (max-width:759px){ nav.links{ display:none; } }
+
+  /* ---------- Wayfinder rail ---------- */
+  .wayfinder{
+    position:fixed; left:22px; top:50%; transform:translateY(-50%);
+    z-index:40; display:flex; flex-direction:column; gap:22px;
+    align-items:flex-start;
+  }
+  .wayfinder::before{
+    content:""; position:absolute; left:5px; top:-18px; bottom:-18px; width:1px;
+    background:linear-gradient(var(--line), var(--line));
+  }
+  .way-dot{
+    display:flex; align-items:center; gap:10px; text-decoration:none;
+    position:relative; z-index:1;
+  }
+  .way-dot .mark{
+    width:11px; height:11px; border-radius:50%;
+    border:1px solid var(--gold); background:var(--cream);
+    transition:background 0.3s ease, transform 0.3s ease;
+  }
+  .way-dot .lbl{
+    font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); opacity:0; transform:translateX(-6px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    white-space:nowrap;
+  }
+  .way-dot:hover .lbl, .way-dot.active .lbl{ opacity:1; transform:translateX(0); }
+  .way-dot.active .mark{ background:var(--gold); transform:scale(1.15); }
+  @media (max-width:1080px){ .wayfinder{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    min-height:min(880px,100svh);
+    display:flex; align-items:flex-end;
+    padding-top:clamp(90px,14vh,140px);
+  }
+  .hero-scene{ position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+  .hero-scene rect.sky{ fill:url(#skyGrad); }
+  .hero-scene .ridge-back{ fill:var(--ridge-back); opacity:0.9; }
+  .hero-scene .ridge-mid{ fill:var(--ridge-mid); }
+  .hero-scene .ridge-front{ fill:var(--ridge-front); }
+  .hero-scene .sun{ fill:var(--sun); filter:blur(1px); opacity:0.9; }
+  .hero-scene .trail{ fill:none; stroke:var(--trail); stroke-width:5; stroke-linecap:round; opacity:0.85; }
+  .hero-scene .tree{ fill:var(--ridge-front); }
+  .hero-scrim{
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(100deg, var(--forest) 0%, color-mix(in srgb, var(--forest) 60%, transparent) 34%, transparent 62%);
+  }
+  .hero-inner{ position:relative; z-index:2; width:100%; padding-bottom:clamp(48px,8vh,88px); }
+  .hero-inner .container{ max-width:1180px; }
+  .hero-eyebrow{
+    font-size:0.75rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold-light); margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,6vw,4.6rem); line-height:1.03; color:var(--paper);
+    max-width:14ch;
+  }
+  .hero .script{
+    font-size:clamp(1.6rem,3.4vw,2.5rem); margin-top:20px; color:var(--gold-light);
+    max-width:20ch;
+  }
+  .hero .lede{ margin-top:26px; color:color-mix(in srgb, var(--paper) 82%, transparent); max-width:46ch; font-size:1.05rem; }
+  .hero-actions{ margin-top:36px; display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-actions .btn-ghost{ color:var(--paper); border-color:var(--gold-light); }
+
+  /* ---------- Sections generic ---------- */
+  section{ position:relative; }
+  .band{ padding:clamp(70px,10vw,120px) 0; }
+  .band-alt{ background:var(--cream-2); }
+  .two-col{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:clamp(36px,6vw,90px);
+    align-items:start;
+  }
+  @media (max-width:840px){ .two-col{ grid-template-columns:1fr; } }
+  .col-label{ position:sticky; top:120px; }
+  .rule{
+    width:56px; height:1px; background:var(--gold); margin:26px 0 0;
+  }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in-view{ opacity:1; transform:none; }
+
+  /* ---------- Pillars strip ---------- */
+  .pillars{
+    background:var(--forest); color:var(--cream);
+  }
+  .pillars .container{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(18px,3vw,34px);
+  }
+  @media (max-width:900px){ .pillars .container{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .pillars .container{ grid-template-columns:1fr; } }
+  .pillar{ text-align:left; padding-top:2px; }
+  .pillar svg{ width:38px; height:38px; color:var(--gold-light); margin-bottom:16px; }
+  .pillar h3{
+    font-family:"Jost", sans-serif; font-weight:500; font-size:0.82rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--paper); margin-bottom:8px;
+  }
+  .pillar p{ color:color-mix(in srgb, var(--paper) 72%, transparent); font-size:0.92rem; max-width:26ch; }
+
+  /* ---------- callout ---------- */
+  .callout{
+    border-left:2px solid var(--gold);
+    padding:22px 28px; margin-top:34px;
+    background:color-mix(in srgb, var(--gold) 7%, transparent);
+  }
+  .callout p{ color:var(--ink); max-width:58ch; }
+
+  /* ---------- cards ---------- */
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:44px; }
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:20px; }
+  @media (max-width:900px){ .grid-3{ grid-template-columns:1fr 1fr; } .grid-4{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .grid-3{ grid-template-columns:1fr; } .grid-4{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--paper); border:1px solid var(--line);
+    padding:28px 26px; border-radius:1px;
+  }
+  .card .num{
+    font-family:"Cormorant Garamond", serif; font-style:italic; color:var(--gold);
+    font-size:1.5rem; display:block; margin-bottom:10px;
+  }
+  .card h3{ font-size:1.18rem; margin-bottom:10px; }
+  .card p{ font-size:0.94rem; margin:0; }
+
+  .tool{ padding:20px 4px; border-top:1px solid var(--line); }
+  .tool h3{ font-size:1.02rem; font-weight:600; margin-bottom:6px; }
+  .tool p{ font-size:0.92rem; margin:0; }
+
+  /* ---------- aside card (astrologie) ---------- */
+  .aside-card{
+    margin-top:40px; border:1px solid var(--line); background:var(--cream-2);
+    padding:clamp(26px,4vw,40px); display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:start;
+  }
+  .aside-card svg{ width:34px; height:34px; color:var(--gold); }
+  @media (max-width:560px){ .aside-card{ grid-template-columns:1fr; } }
+
+  /* ---------- pull quote band ---------- */
+  .quote-band{
+    background:var(--forest); color:var(--paper);
+    padding:clamp(80px,12vw,130px) 0;
+  }
+  .quote-band .container{ max-width:900px; }
+  .quote-band .script{
+    font-size:clamp(1.9rem,4vw,3rem); color:var(--gold-light); line-height:1.2;
+  }
+  .quote-band p{ color:color-mix(in srgb, var(--paper) 80%, transparent); margin-top:26px; max-width:60ch; }
+
+  /* ---------- checklist ---------- */
+  .checklist{
+    list-style:none; margin:36px 0 0; padding:0;
+    display:grid; grid-template-columns:1fr 1fr; gap:14px 40px;
+  }
+  @media (max-width:700px){ .checklist{ grid-template-columns:1fr; } }
+  .checklist li{
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:0.98rem; color:var(--ink); padding-bottom:14px; border-bottom:1px solid var(--line);
+  }
+  .checklist svg{ width:16px; height:16px; flex:none; margin-top:5px; color:var(--gold-strong); }
+
+  /* ---------- contact ---------- */
+  .contact-lede{ text-align:center; max-width:640px; margin:0 auto; }
+  .contact-lede .script{ font-size:clamp(1.7rem,3.4vw,2.3rem); }
+  .locations{
+    display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:56px;
+  }
+  @media (max-width:700px){ .locations{ grid-template-columns:1fr; } }
+  .loc-card{
+    border:1px solid var(--line); background:var(--paper);
+    padding:30px 28px; position:relative;
+  }
+  .loc-card svg{ width:22px; height:22px; color:var(--gold); margin-bottom:16px; }
+  .loc-card h3{ font-size:1.05rem; font-family:"Jost",sans-serif; font-weight:500; letter-spacing:0.02em; margin-bottom:6px; }
+  .loc-card address{ font-style:normal; color:var(--ink-soft); font-size:0.95rem; line-height:1.6; }
+
+  .contact-fields{
+    margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+    text-align:center;
+  }
+  @media (max-width:700px){ .contact-fields{ grid-template-columns:1fr; } }
+  .field{ padding:18px 10px; border-top:1px solid var(--line); }
+  .field .k{ font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-strong); display:block; margin-bottom:8px; }
+  .field .v{ font-style:italic; color:var(--ink-soft); font-size:0.95rem; }
+
+  .contact-actions{ text-align:center; margin-top:48px; }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--forest-3); color:color-mix(in srgb, var(--paper) 75%, transparent);
+    padding:56px 0 34px;
+  }
+  .foot-row{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+  .foot-brand{ display:flex; align-items:center; gap:10px; }
+  .foot-brand svg{ width:22px; height:22px; color:var(--gold-light); }
+  .foot-brand span{ font-family:"Cormorant Garamond", serif; font-size:1.1rem; color:var(--paper); }
+  .foot-links{ display:flex; gap:24px; flex-wrap:wrap; }
+  .foot-links a{ font-size:0.78rem; text-decoration:none; letter-spacing:0.05em; color:inherit; }
+  .foot-links a:hover{ color:var(--gold-light); }
+  .foot-fine{ margin-top:34px; font-size:0.78rem; opacity:0.6; border-top:1px solid color-mix(in srgb, var(--paper) 14%, transparent); padding-top:22px; }
+
+  ::selection{ background:var(--gold); color:var(--forest-3); }
+</style>
+
+<!-- icon defs -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="icon-insight" viewBox="0 0 48 48">
+      <path d="M5 24C5 24 13 13 24 13C35 13 43 24 43 24C43 24 35 35 24 35C13 35 5 24 5 24Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="24" cy="24" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="icon-guidance" viewBox="0 0 48 48">
+      <circle cx="24" cy="17" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M8 40C8 40 12 28 24 28C36 28 40 40 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-wellbeing" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="34 7 20 9 14 6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-connection" viewBox="0 0 48 48">
+      <path d="M24 39C24 39 6 27.5 6 15.8C6 9.3 11.4 5.4 17 7.7C20 8.9 24 12.4 24 12.4C24 12.4 28 8.9 31 7.7C36.6 5.4 42 9.3 42 15.8C42 27.5 24 39 24 39Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-direction" viewBox="0 0 48 48">
+      <path d="M5 39C11 39 11 30 17 30C23 30 23 21 29 21C35 21 35 12 41 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="41" cy="9" r="3.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-compass" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M12 3.6L14 12L12 20.4L10 12Z" fill="currentColor"/>
+      <path d="M3.6 12L12 10L20.4 12L12 14Z" fill="currentColor" opacity="0.55"/>
+    </symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24">
+      <path d="M12 21C12 21 5 13.6 5 8.6C5 4.5 8.1 2 12 2C15.9 2 19 4.5 19 8.6C19 13.6 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="12" cy="8.6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M4 12.5L9.5 18L20 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= NAV ================= -->
+<header class="site-nav">
+  <div class="container nav-row">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 24 24"><use href="#icon-compass"/></svg>
+      <span class="brand-text">Praktijk <em>Kompass</em></span>
+    </a>
+    <nav class="links" aria-label="Hoofdnavigatie">
+      <a href="#over">Over</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#aanbod">Aanbod</a>
+      <a href="#gezinnen">Voor gezinnen</a>
+      <a href="#visie">Visie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- ================= WAYFINDER ================= -->
+<nav class="wayfinder" aria-label="Voortgang op de pagina">
+  <a class="way-dot" data-target="hero" href="#top"><span class="mark"></span><span class="lbl">Kompass</span></a>
+  <a class="way-dot" data-target="over" href="#over"><span class="mark"></span><span class="lbl">Over</span></a>
+  <a class="way-dot" data-target="werkwijze" href="#werkwijze"><span class="mark"></span><span class="lbl">Werkwijze</span></a>
+  <a class="way-dot" data-target="aanbod" href="#aanbod"><span class="mark"></span><span class="lbl">Aanbod</span></a>
+  <a class="way-dot" data-target="gezinnen" href="#gezinnen"><span class="mark"></span><span class="lbl">Gezinnen</span></a>
+  <a class="way-dot" data-target="visie" href="#visie"><span class="mark"></span><span class="lbl">Visie</span></a>
+  <a class="way-dot" data-target="contact" href="#contact"><span class="mark"></span><span class="lbl">Contact</span></a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero" data-section="hero" aria-labelledby="hero-title">
+  <svg class="hero-scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0.15" y2="1">
+        <stop offset="0%" stop-color="var(--sky-top)"/>
+        <stop offset="55%" stop-color="var(--sky-mid)"/>
+        <stop offset="100%" stop-color="var(--sky-low)"/>
+      </linearGradient>
+    </defs>
+    <rect class="sky" x="0" y="0" width="1600" height="900"/>
+    <circle class="sun" cx="1310" cy="230" r="130"/>
+    <polygon class="ridge-back" points="700,560 900,420 1080,500 1260,410 1470,500 1600,440 1600,900 700,900"/>
+    <polygon class="ridge-mid" points="500,620 760,500 1000,580 1240,480 1600,560 1600,900 500,900"/>
+    <path class="trail" d="M760,900 C820,760 700,700 760,600 C820,500 940,470 1040,380 C1120,310 1180,270 1290,220"/>
+    <polygon class="ridge-front" points="1350,900 1400,560 1430,640 1460,540 1500,660 1530,560 1560,900"/>
+    <g class="tree">
+      <ellipse cx="1420" cy="520" rx="50" ry="130"/>
+      <ellipse cx="1500" cy="470" rx="60" ry="160"/>
+      <ellipse cx="1560" cy="500" rx="45" ry="140"/>
+    </g>
+  </svg>
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <div class="container">
+      <p class="hero-eyebrow">Praktijk Kompass — voor mens en gezin</p>
+      <h1 id="hero-title">Er even niet meer<br>alleen voor staan</h1>
+      <p class="script">Samen op weg naar rust, inzicht en veerkracht</p>
+      <p class="lede">Begeleiding voor mensen en gezinnen die nood hebben aan helderheid, structuur, ondersteuning en nieuwe perspectieven — met aandacht voor het volledige plaatje, niet enkel het probleem van vandaag.</p>
+      <p class="hero-eyebrow" style="margin-top:24px;margin-bottom:0">Griet Avet — somato-psychopedagoog</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#over">Maak kennis</a>
+        <a class="btn btn-ghost" href="#contact">Neem contact op</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OVER / INTRO ================= -->
+<section class="band" id="over" data-section="over">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-label reveal">
+        <p class="eyebrow">Begeleiding voor mens, gezin en welzijn</p>
+        <h2>Er even niet meer<br>alleen voor staan</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="reveal">
+        <p>Wanneer het leven complex wordt, verliezen mensen soms het overzicht. Problemen stapelen zich op, energie raakt uitgeput en de juiste richting lijkt zoek. Op zulke momenten kan een objectieve, betrokken en ervaren begeleider het verschil maken.</p>
+        <p>Mijn begeleiding richt zich op mensen en gezinnen die nood hebben aan helderheid, structuur, ondersteuning en nieuwe perspectieven. Hierbij kijk ik niet uitsluitend naar het probleem dat zich vandaag stelt, maar naar het volledige plaatje: de persoon, de omgeving, de onderlinge relaties, de draagkracht en de werkelijke behoeften van alle betrokkenen.</p>
+        <p>In mijn begeleiding combineer ik psychosociale ondersteuning en welzijnsgerichte ondersteuning via lichaamswerk. Samen onderzoeken we welke factoren een rol spelen in de huidige situatie en welke stappen nodig zijn om opnieuw rust, evenwicht en richting te vinden.</p>
+        <div class="callout">
+          <p>Als ouder van een kind met een specifieke ondersteuningsnood komt er ontzettend veel op u af: administratieve verplichtingen, aanvragen, wachtlijsten, financiële vragen, zorgcoördinatie en de dagelijkse zorg voor uw gezin. Ik bied warme, persoonlijke en laagdrempelige begeleiding aan voor wie nood heeft aan overzicht en ondersteuning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILLARS ================= -->
+<section class="pillars band" aria-label="Kernwaarden">
+  <div class="container">
+    <div class="pillar reveal">
+      <svg><use href="#icon-insight"/></svg>
+      <h3>Inzicht</h3>
+      <p>Zicht op wat er speelt, ook onder de oppervlakte.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg><use href="#icon-guidance"/></svg>
+      <h3>Begeleiding</h3>
+      <p>Een betrokken gids, op uw tempo en met respect voor uw situatie.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg><use href="#icon-wellbeing"/></svg>
+      <h3>Welzijn</h3>
+      <p>Rust voor lichaam en geest, via gesprek en lichaamswerk.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg><use href="#icon-connection"/></svg>
+      <h3>Verbinding</h3>
+      <p>Met uzelf, en met wie om u en uw gezin heen staat.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg><use href="#icon-direction"/></svg>
+      <h3>Richting</h3>
+      <p>Concrete stappen naar meer evenwicht en vertrouwen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PERSOONLIJKE BENADERING ================= -->
+<section class="band band-alt">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-label reveal">
+        <p class="eyebrow">Aanpak</p>
+        <h2>Een diepgaande en<br>persoonlijke benadering</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="reveal">
+        <p>Iedere mens is uniek. Daarom neem ik de tijd om verder te kijken dan de zichtbare problemen. Samen onderzoeken we persoonlijke kwaliteiten, uitdagingen, overtuigingen, talenten en terugkerende patronen die invloed hebben op het dagelijks functioneren.</p>
+        <p>Als aanvullend hulpmiddel maak ik gebruik van persoonlijkheidsanalyse en, indien gewenst, astrologische inzichten als instrument voor zelfreflectie en bewustwording. Deze benadering wordt niet gebruikt om voorspellingen te doen, maar om mensen op een andere manier naar zichzelf, hun mogelijkheden en hun levenssituatie te laten kijken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WERKWIJZE ================= -->
+<section class="band" id="werkwijze" data-section="werkwijze">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-label reveal">
+        <p class="eyebrow">Mijn werkwijze</p>
+        <h2>Waar lichaam en<br>verhaal samenkomen</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="reveal">
+        <p>Elke begeleiding start met een grondige analyse van de volledige situatie. Ik kijk naar de behoeften van de persoon én van de mensen rondom hem of haar. Door aandachtig te luisteren en verbanden te leggen, ontstaat inzicht in wat werkelijk nodig is om opnieuw evenwicht te creëren.</p>
+        <p>Vanuit mijn opleiding als somato-psychopedagoog combineer ik gesprekstherapie met lichaamsgerichte manuele therapie. Deze benadering vertrekt vanuit de wisselwerking tussen lichaam en geest, en helpt om spanningen, stress, onverwerkte emoties, ingrijpende gebeurtenissen en psychosomatische klachten beter te begrijpen en te verminderen.</p>
+      </div>
+    </div>
+
+    <div class="grid-3 reveal">
+      <div class="card">
+        <span class="num">I.</span>
+        <h3>Lichamelijke benadering</h3>
+        <p>Ik vertrek vanuit het fysieke lichaam om spanningen te ontdekken en te verlichten.</p>
+      </div>
+      <div class="card">
+        <span class="num">II.</span>
+        <h3>Stressregulatie</h3>
+        <p>Ik help het stresssysteem tot rust te brengen bij klachten zoals pijn, vermoeidheid of stress.</p>
+      </div>
+      <div class="card">
+        <span class="num">III.</span>
+        <h3>Bewustwording</h3>
+        <p>U leert beter luisteren naar wat uw lichaam vertelt over uw gedachten en gedrag.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:70px">
+      <p class="eyebrow">De vier gebruikte hulpmiddelen</p>
+      <div class="grid-4">
+        <div class="tool">
+          <h3>Manuele technieken</h3>
+          <p>Zachte aanrakingen van het bindweefsel (fascia) om fysieke spanning weg te nemen.</p>
+        </div>
+        <div class="tool">
+          <h3>Bewegingstherapie</h3>
+          <p>Specifieke, trage oefeningen om lichaamsbewustzijn en houding te verbeteren.</p>
+        </div>
+        <div class="tool">
+          <h3>Meditatie</h3>
+          <p>Aandachtsoefeningen gericht op het dieper ervaren van het innerlijke gevoel.</p>
+        </div>
+        <div class="tool">
+          <h3>Verdiepend gesprek</h3>
+          <p>Reflecteren over de fysieke ervaringen en de link met emoties of het dagelijks leven.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AANBOD / COMPLEMENTAIR ================= -->
+<section class="band band-alt" id="aanbod" data-section="aanbod">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-label reveal">
+        <p class="eyebrow">Complementaire ondersteuning</p>
+        <h2>Reiki en Yin yoga</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="reveal">
+        <p>Ik begeleid mensen bij het versterken van hun veerkracht, zelfvertrouwen en persoonlijke ontwikkeling. Ik heb ruime ervaring in het begeleiden van mensen met trauma, chronische stress, emotionele overbelasting, relaxatie en lichamelijke spannings- en pijnklachten.</p>
+        <p>Ik bied complementaire welzijnsondersteuning aan via manuele technieken gericht op fascia, Reiki en Yin yoga. Deze sessies zijn gericht op ontspanning, innerlijke rust, lichaamsbewustzijn en het bevorderen van het algemeen welzijn — als aanvulling op de praktische en psychosociale begeleiding.</p>
+
+        <div class="aside-card">
+          <svg viewBox="0 0 24 24"><use href="#icon-compass"/></svg>
+          <div>
+            <h3 style="font-size:1.05rem;margin-bottom:8px">Astrologie als extra spiegel</h3>
+            <p style="font-size:0.95rem">Om mensen nog meer inzicht te geven in hun persoonlijkheid, talenten, uitdagingen en levensdynamiek maak ik, indien gewenst, ook gebruik van astrologische persoonlijkheidsanalyse. Voor mij is astrologie geen middel om de toekomst te voorspellen, maar een professioneel instrument voor zelfreflectie, bewustwording en persoonlijke groei — het helpt mensen zichzelf beter te begrijpen en bewuster keuzes te maken.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GEZINNEN ================= -->
+<section class="band" id="gezinnen" data-section="gezinnen">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-label reveal">
+        <p class="eyebrow">Voor ouders en gezinnen</p>
+        <h2>Wegwijs in zorg,<br>rechten en administratie</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="reveal">
+        <p>Naast persoonlijke begeleiding ondersteun ik cliënten ook bij administratieve, sociale en financiële vraagstukken. Ik help hen hun weg te vinden binnen het zorglandschap, tegemoetkomingen, ondersteuningsmogelijkheden en complexe aanvragen, zodat zij opnieuw overzicht krijgen en zich kunnen richten op wat echt belangrijk is.</p>
+        <ul class="checklist" style="grid-template-columns:1fr;margin-top:28px">
+          <li><svg><use href="#icon-check"/></svg>Ondersteuning van ouders en gezinnen die zich overweldigd voelen door zorgnoden</li>
+          <li><svg><use href="#icon-check"/></svg>Wegwijs maken in rechten, tegemoetkomingen en ondersteuningsmogelijkheden</li>
+          <li><svg><use href="#icon-check"/></svg>Begeleiding bij zorg- en ondersteuningsaanvragen zoals PAB/PVB en andere zorggerelateerde dossiers</li>
+          <li style="border-bottom:none"><svg><use href="#icon-check"/></svg>Meedenken over thuisbegeleiding en passende ondersteuning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISSIE / VISIE ================= -->
+<section class="quote-band" id="visie" data-section="visie">
+  <div class="container reveal">
+    <p class="eyebrow" style="color:var(--gold-light)">Mijn missie</p>
+    <p style="color:var(--paper);max-width:60ch;font-size:1.05rem">Iedere mens draagt een uniek verhaal met zich mee. Achter administratieve zorgen, financiële moeilijkheden, stress, lichamelijke klachten of relationele problemen schuilt vaak een diepere oorzaak — daarom kijk ik niet alleen naar het probleem, maar naar de mens als geheel.</p>
+    <p class="script">Een steunpilaar voor wie vastloopt.<br>Een klankbord voor wie antwoorden zoekt.<br>Een gids voor wie de richting kwijt is.</p>
+    <p style="margin-top:40px">Mijn begeleiding is gebaseerd op een holistische visie waarbij lichaam, geest, emoties, omgeving en levensomstandigheden onlosmakelijk met elkaar verbonden zijn. Ik help mensen opnieuw overzicht, rust en richting te vinden, zodat zij verbinding maken met hun eigen kracht en daardoor verder kunnen.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-label reveal">
+        <p class="eyebrow">Mijn visie</p>
+        <h2>Gezien, gehoord<br>en begrepen</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="reveal">
+        <p>Ik geloof dat echte begeleiding begint waar mensen zich gezien, gehoord en begrepen voelen. Soms hebben mensen geen pasklare oplossingen nodig, maar iemand die met kennis, ervaring, empathie en een open blik naast hen gaat staan — iemand die orde brengt in de chaos, verbanden helpt zien en opnieuw perspectief creëert.</p>
+        <p>Ik wil die persoon zijn die rust brengt wanneer alles te veel wordt, helderheid schept wanneer de weg onduidelijk lijkt, en mensen ondersteunt om opnieuw vertrouwen te krijgen in zichzelf en hun toekomst. Samen bouwen we aan meer evenwicht, veerkracht, welzijn en levenskwaliteit.</p>
+        <p style="margin-top:28px"><em>Mijn visie is eenvoudig: niemand zou er alleen voor moeten staan. Ik neem de tijd om samen met u te bekijken wat nodig is — stap voor stap, op uw tempo en met respect voor uw situatie.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WAARVOOR TERECHT ================= -->
+<section class="band band-alt">
+  <div class="container">
+    <div class="reveal" style="max-width:640px">
+      <p class="eyebrow">Aanbod op een rij</p>
+      <h2>Waarvoor kunt u<br>bij mij terecht?</h2>
+      <div class="rule"></div>
+    </div>
+    <ul class="checklist reveal">
+      <li><svg><use href="#icon-check"/></svg>Psychosociale begeleiding waarbij uw verhaal centraal staat</li>
+      <li><svg><use href="#icon-check"/></svg>Persoonlijke coaching en inzicht in gedragspatronen en relationele dynamieken</li>
+      <li><svg><use href="#icon-check"/></svg>Reiki ter bevordering van welzijn, ontspanning en lichaamsbewustzijn</li>
+      <li><svg><use href="#icon-check"/></svg>Lichaamsgerichte ondersteuning via manuele therapie gericht op fascia</li>
+      <li><svg><use href="#icon-check"/></svg>Yin yoga gericht op bindweefsel</li>
+      <li><svg><use href="#icon-check"/></svg>Ondersteuning van ouders en gezinnen die zich overweldigd voelen door zorgnoden</li>
+      <li><svg><use href="#icon-check"/></svg>Administratieve en financiële ondersteuning</li>
+      <li><svg><use href="#icon-check"/></svg>Wegwijs maken in rechten, tegemoetkomingen en ondersteuningsmogelijkheden</li>
+      <li><svg><use href="#icon-check"/></svg>Begeleiding bij zorgaanvragen zoals PAB/PVB en andere zorggerelateerde dossiers</li>
+      <li><svg><use href="#icon-check"/></svg>Meedenken over thuisbegeleiding en passende ondersteuning</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="band" id="contact" data-section="contact">
+  <div class="container">
+    <div class="contact-lede reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Elke mens. Elk verhaal.<br>Elke stap telt.</h2>
+      <p class="script">Neem gerust contact op voor een kennismaking of een eerste gesprek</p>
+    </div>
+
+    <div class="locations reveal">
+      <div class="loc-card">
+        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+        <h3>Praktijk Kompass</h3>
+        <address>Rozenaaksesteenweg 40<br>9600 Ronse</address>
+      </div>
+      <div class="loc-card">
+        <svg viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
+        <h3>Praktijk Kompass</h3>
+        <address>Kaatsspelplein 3<br>9600 Ronse</address>
+      </div>
+    </div>
+
+    <div class="contact-fields reveal">
+      <div class="field"><span class="k">Telefoon</span><span class="v"><a href="tel:+32477611943" style="font-style:normal;color:inherit;text-decoration:none">0477 61 19 43</a></span></div>
+      <div class="field"><span class="k">E-mail</span><span class="v">[ in te vullen ]</span></div>
+      <div class="field"><span class="k">Instagram / Facebook</span><span class="v">[ in te vullen ]</span></div>
+    </div>
+
+    <div class="contact-actions reveal">
+      <a class="btn btn-solid" href="tel:+32477611943">Bel voor een afspraak</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="foot-row">
+      <div class="foot-brand">
+        <svg viewBox="0 0 24 24"><use href="#icon-compass"/></svg>
+        <span>Praktijk Kompass — voor mens en gezin</span>
+      </div>
+      <div class="foot-links">
+        <a href="#over">Over</a>
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="#aanbod">Aanbod</a>
+        <a href="#gezinnen">Voor gezinnen</a>
+        <a href="#visie">Visie</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="foot-fine">© 2026 Griet Avet — Praktijk Kompass, Ronse. Psychosociale en lichaamsgerichte begeleiding voor mens en gezin.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  // Wayfinder active state
+  var sections = document.querySelectorAll('[data-section]');
+  var dots = document.querySelectorAll('.way-dot');
+  if (sections.length && dots.length && 'IntersectionObserver' in window) {
+    var map = {};
+    dots.forEach(function(d){ map[d.dataset.target] = d; });
+    var navIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var dot = map[e.target.dataset.section];
+        if (!dot) return;
+        if (e.isIntersecting) {
+          dots.forEach(function(d){ d.classList.remove('active'); });
+          dot.classList.add('active');
+        }
+      });
+    }, { threshold: 0, rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ navIo.observe(s); });
+  }
+})();
+</script>
